@@ -12,5 +12,6 @@
 // TODO: 여기에 미리 컴파일하려는 헤더 추가
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
+#include <opencv2/ml.hpp>
 
 #endif //PCH_H

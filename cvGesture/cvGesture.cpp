@@ -7,22 +7,25 @@
 
 int main()
 {
-	cv::Mat frame = cv::Mat(200, 500, CV_8UC3);
+	auto cam = cv::VideoCapture(0);
+	//auto knn = cv::ml::KNearest::create();
+
+	auto frame = cv::Mat(200, 500, CV_8UC3);
+	bool histEqYCbCr = false, median = false, lap = false;
+	int medianSize = 3, lapSize = 1;
 
 	cvui::init(WINDOW_NAME);
-	uint8_t count = 0;
-
 	while (true) {
-		frame = cv::Scalar(49, 52, 49);
+		cam >> frame;
 
-		cvui::text(frame, 110, 40, "Hello, world!");
-		if (cvui::button(frame, 110, 70, "Button")) {
-			count++;
-		}
-		cvui::printf(frame, 110, 100, "%d", count);
+		cv::cvtColor(frame, frame, cv::COLOR_BGR2GRAY);
+		cv::medianBlur(frame, frame, medianSize);
+		cv::equalizeHist(frame, frame);
 
+		int layoutIdx = 1;
+		cvui::counter(frame, 20, 20 * (layoutIdx++), &medianSize, 2);
+		cvui::checkbox(frame, 20, 20 * (layoutIdx++), "Laplacian", &lap);
 		cvui::imshow(WINDOW_NAME, frame);
-
 		if (cv::waitKey(20) == 27) {
 			break;
 		}

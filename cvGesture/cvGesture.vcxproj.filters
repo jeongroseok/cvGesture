@@ -15,18 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="cvui.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="cvGesture.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="cvGesture.cpp">
+    <ClCompile Include="..\dlib\dlib\all\source.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
